@@ -34,13 +34,16 @@ aluno1 = Aluno(nome="João", sobrenome="Silva", cpf="123.456.789-00", endereco="
 choose = 0
 while True:
     if choose == 1:
-       novo_c = input("Escolha entre(mecatrônica, eletromecânica, informática)")
-       aluno1.set_curso(novo_c)
-       print(f"Seu curso agora é {aluno1._Aluno__curso}")
+        novo_c = input("Escolha entre(mecatrônica, eletromecânica, informática)\n")
+        try:
+            aluno1.set_curso(novo_c)
+            print(f"Seu curso agora é {aluno1._Aluno__curso}\n")
+        except ValueError:
+           print("Houve um erro de digitação\n")
     elif choose == 2:
         print(aluno1)
     elif choose == 3:
         aluno1.editar_dados()
 
-    print("1 - Transferir Curso\n2 - Listar Dados\n3 - Editar Dados\n4 - Desativar Aluno\n5 - Reativar Aluno")
+    print("1 - Transferir Curso\n2 - Listar Dados\n3 - Editar Dados\n4 - Desativar Aluno\n5 - Reativar Aluno\n")
     choose = int(input("Oque voçê deseja fazer:"))
