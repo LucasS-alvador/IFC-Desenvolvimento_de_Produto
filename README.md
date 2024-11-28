@@ -1,10 +1,13 @@
 <h1>Trabalho "Desenvolvimento de Produto" de Programação I</h1>
 
 Em realização por: (ordem alphabética)
-- Antônio Henrique Rohling Froehner
-- Artur Pagel
-- Gabriel Siewerdt
-- Lucas Salvador⠀⠀⠀
+
+<ul>
+<li> Antônio Henrique Rohling Froehner </li>
+<li> Artur Pagel </li>
+<li> Gabriel Siewerdt </li>
+<li> Lucas Salvador </li>
+</ul>
 
 Diagrama de Classes UML
 
