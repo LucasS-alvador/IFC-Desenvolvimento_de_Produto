@@ -6,7 +6,7 @@ from diciplina import Disciplina
 # professor1 = Professor(
 #     nome="Carlos",
 #     sobrenome="Silva",
-#     cpf="123.456.789-00",
+#     cpf="123.456.789-09",
 #     endereco="Rua ABC, 123",
 #     email="carlos@email.com",
 #     formacao="Mestrado em Matemática",
