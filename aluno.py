@@ -15,7 +15,7 @@ class Aluno(Pessoa):
     # Getters
     def get_medio_superior(self):
         return self.__medio_superior
-     # Retorna None para retornar nada de o aluno é do ensino médio
+     # Retorna None para retornar nada se o aluno é do ensino médio
     def get_curso(self):
         if self.__medio_superior:
             return self.__curso
