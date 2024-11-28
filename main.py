@@ -32,6 +32,7 @@ aluno1 = Aluno(nome="João", sobrenome="Silva", cpf="123.456.789-00", endereco="
 
 # print(aluno1._Aluno__curso)
 choose = 0
+
 while True:
     if choose == 1:
         novo_c = input("Escolha entre(mecatrônica, eletromecânica, informática)\n")
@@ -47,3 +48,6 @@ while True:
 
     print("1 - Transferir Curso\n2 - Listar Dados\n3 - Editar Dados\n4 - Desativar Aluno\n5 - Reativar Aluno\n")
     choose = int(input("Oque voçê deseja fazer:"))
+    if not isinstance(choose, int) or choose < 1 or choose > 5:
+        print("Opção inválida, deve ser um número entre 1 e 5, inclusivo")
+        choose = 0
