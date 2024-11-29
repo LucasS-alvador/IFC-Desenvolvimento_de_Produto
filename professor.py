@@ -1,14 +1,17 @@
 from pessoa import Pessoa
+from turma import Turma
 
 class Professor(Pessoa):
     def __init__(self, nome: str, sobrenome: str, cpf: str, endereco: str, email: str,
-                 formacao: str, disciplinas: list, segmentos: list, username: str, senha: str):
+                 formacao: str, disciplinas: list, segmentos: list, username: str, senha: str, turmas: list):
         super().__init__(nome, sobrenome, cpf, endereco, email)  # Inicializa os atributos da classe base
         self.__formacao = formacao
         self.__disciplinas = disciplinas
         self.__segmentos = segmentos
         self.__username = username
         self.__senha = senha
+        self.__turmas = turmas
+        self.__status = 1
 
     # Getters
     def get_formacao(self):
@@ -25,6 +28,12 @@ class Professor(Pessoa):
 
     def get_senha(self):
         return self.__senha
+    
+    def get_turmas(self):
+        return self.__turmas
+    
+    def get_status(self):
+        return self.__status
 
     # Setters
     def set_formacao(self, nova_formacao: str):
@@ -56,3 +65,9 @@ class Professor(Pessoa):
             self.__senha = nova_senha
         else:
             raise ValueError("A senha deve ser uma string com pelo menos 6 caracteres.")
+        
+    def set_turmas(self, nova_turmas: str):
+        if isinstance(nova_turmas, list) and nova_turmas.strip():
+            self.__turmas = nova_turmas
+        else:
+            raise ValueError("As turmas devem ser fornecidas como uma lista.")
