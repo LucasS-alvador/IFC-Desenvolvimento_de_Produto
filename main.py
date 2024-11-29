@@ -24,7 +24,7 @@ from diciplina import Disciplina
 
 # print(professor1.get_formacao())  
 
-aluno1 = Aluno(nome="João", sobrenome="Silva", cpf="123.456.789-00", endereco="Rua A", email="joao@email.com",medio_superior=True, curso="mecatrônica")
+aluno1 = Aluno(nome="João", sobrenome="Silva", cpf="123.456.789-00", endereco="Rua A", email="joao@email.com", status = True, medio_superior=True, curso="mecatrônica")
 
 # print(f"Curso atual: {aluno1._Aluno__curso}") 
 
@@ -51,3 +51,5 @@ while True:
     if not isinstance(choose, int) or choose < 1 or choose > 5:
         print("Opção inválida, deve ser um número entre 1 e 5, inclusivo")
         choose = 0
+
+
