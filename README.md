@@ -1,4 +1,4 @@
-<h1 style="font-size:40px" >Trabalho "Desenvolvimento de Produto" de Programação I</h1>
+<h1 style="font-size:100px" >Trabalho "Desenvolvimento de Produto" de Programação I</h1>
 
 Em realização por: (ordem alphabética)
 
