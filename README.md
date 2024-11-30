@@ -3,7 +3,7 @@
 Em realização por: (ordem alphabética)
 
 <ul>
-<li> Antônio Henrique Rohling Froehner </li><a href="https://github.com/tonhao255">[Tonhao255]</a>
+<li> Antônio Henrique Rohling Froehner <a href="https://github.com/tonhao255">[Tonhao255]</a></li>
 <li> Artur Pagel </li>
 <li> Gabriel Siewerdt </li>
 <li> Lucas Salvador </li>
