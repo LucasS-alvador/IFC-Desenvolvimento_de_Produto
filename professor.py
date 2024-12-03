@@ -71,3 +71,9 @@ class Professor(Pessoa):
             self.__turmas = nova_turmas
         else:
             raise ValueError("As turmas devem ser fornecidas como uma lista.")
+        
+    def set_status(self, novo_status: int):
+        if novo_status in [0, 1]:
+            self.__status = novo_status
+        else:
+            raise ValueError("O status deve ser 0 ou 1")
