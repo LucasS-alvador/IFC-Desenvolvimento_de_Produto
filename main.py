@@ -3,6 +3,7 @@ from professor import Professor
 from turma import Turma
 from diciplina import Disciplina
 
+# Definindo o professor
 professor1 = Professor(
     nome="Carlos",
     sobrenome="Silva",
@@ -14,58 +15,21 @@ professor1 = Professor(
     segmentos=["EM", "Superior"],
     username="carlos.silva",
     senha="senha123",
-    turmas=["201info","202eletro"])
-
-# print(professor1.get_formacao())     
-# print(professor1.get_disciplinas())  
-# print(professor1.get_segmentos())    
-# print(professor1.get_username())     
-
-# professor1.set_formacao("Doutorado em Matemática")
-
-# print(professor1.get_formacao())  
-
-aluno1 = Aluno(nome="João", sobrenome="Silva", cpf="123.456.789-00", endereco="Rua A", email="joao@email.com",medio_superior=True, curso="mecatrônica")
-
-# print(f"Curso atual: {aluno1._Aluno__curso}") 
-
-# print(aluno1.set_curso("informática"))
-
-# print(aluno1._Aluno__curso)
-choose = 0
-
-# while True:
-#     if choose == 1:
-#         novo_c = input("Escolha entre(mecatrônica, eletromecânica, informática)\n")
-#         try:
-#             aluno1.set_curso(novo_c)
-#             print(f"Seu curso agora é {aluno1._Aluno__curso}\n")
-#         except ValueError:
-#            print("Houve um erro de digitação\n")
-#     elif choose == 2:
-#         print(aluno1)
-#     elif choose == 3:
-#         aluno1.editar_dados()
-
-#     print("1 - Transferir Curso\n2 - Listar Dados\n3 - Editar Dados\n4 - Desativar Aluno\n5 - Reativar Aluno\n")
-#     choose = int(input("Oque voçê deseja fazer:"))
-#     if not isinstance(choose, int) or choose < 1 or choose > 5:
-#         print("Opção inválida, deve ser um número entre 1 e 5, inclusivo")
-#         choose = 0
-
+    turmas=["201info", "202eletro"]
+)
 
 def menu_professor(professor):
     while True:
         print("\n--- Menu de Opções ---")
         print("1 - Editar Dados")
-        print("2 - Listar Dados")
+        print("2 - Listar Dados")   
         print("3 - Desativar Professor")
         print("4 - Reativar Professor")
         print("5 - Excluir Professor")
         print("6 - Sair")
 
         try:
-            escolha = int(input("Escolha uma opção: "))
+            escolha = int(input("\nEscolha uma opção: "))
             
             if escolha == 1:  # Editar dados
                 print("\n--- Editar Dados ---")
@@ -78,12 +42,13 @@ def menu_professor(professor):
                 print("7 - Turmas")
                 print("8 - Nome de Usuário")
                 print("9 - Senha")
-                sub_escolha = int(input("Escolha uma opção: "))
+                sub_escolha = int(input("\n Escolha uma opção: "))
 
                 if sub_escolha == 1:
                     nome = input("Novo nome: ")
                     sobrenome = input("Novo sobrenome: ")
-                    professor.set_nome(nome, sobrenome)
+                    professor.set_nome(nome)
+                    professor.set_sobrenome(sobrenome)
                 elif sub_escolha == 2:
                     endereco = input("Novo endereço: ")
                     professor.set_endereco(endereco)
@@ -109,11 +74,11 @@ def menu_professor(professor):
                     senha = input("Nova senha: ")
                     professor.set_senha(senha)
                 else:
-                    print("Opção inválida para edição.")
+                    print("\n  Opção inválida para edição.")
             
             elif escolha == 2:  # Listar dados
                 print("\n--- Dados do Professor ---")
-                print(f"Nome: {professor.get_username()}")
+                print(f"Nome: {professor.get_nome()} {professor.get_sobrenome()}")
                 print(f"CPF: {professor.get_cpf()}")
                 print(f"Endereço: {professor.get_endereco()}")
                 print(f"E-mail: {professor.get_email()}")
