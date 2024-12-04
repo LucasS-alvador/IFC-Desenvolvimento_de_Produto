@@ -1,22 +1,34 @@
 from pessoa import Pessoa
 
 class Aluno(Pessoa):
-    def __init__(self, nome: str, sobrenome: str, cpf: str, endereco: str, email: str, 
-                 medio_superior: bool, status=1, bacharel_ciencias=False, bacharel_pedago=False, curso="eletro"):
-        super().__init__(nome, sobrenome, cpf, endereco, email)
+    def __init__(self, nome: str, sobrenome: str, nome_user: str, endereco: str, email: str, senha:str, status,
+                 medio_superior: bool, email_resp: str, registro_academ: str, turma: str, bacharel_ciencias=False, bacharel_pedago=False, curso="eletro"):
+        super().__init__(nome, sobrenome, nome_user, endereco, email, senha, status)
         self.__medio_superior = medio_superior
+        self.__email_resp = email_resp
+        self.__registro_academ = registro_academ
+        self.__turma = turma
         if medio_superior:
             self.__curso = curso
         else:
             self.__curso = None 
             self.__bacharel_ciencias = bacharel_ciencias
             self.__bacharel_pedago = bacharel_pedago
-        self.__status = status
 
     # Getters
     def get_medio_superior(self):
         return self.__medio_superior
      # Retorna None para retornar nada se o aluno é do ensino médio
+
+    def get_email_resp(self):
+        return self.__email_resp
+    
+    def get_registro_academ(self):
+        return self.__registro_academ
+    
+    def get_turma(self):
+        return self.__turma
+    
     def get_curso(self):
         if self.__medio_superior:
             return self.__curso
@@ -31,9 +43,6 @@ class Aluno(Pessoa):
         if not self.__medio_superior:
             return self.__bacharel_pedago
         return None
-    
-    def get_status(self):
-        return self.__status
 
     # Setters
     def set_medio_superior(self, medio_superior: bool):
@@ -46,7 +55,21 @@ class Aluno(Pessoa):
             self.__curso = None
             self.__bacharel_ciencias = False
             self.__bacharel_pedago = False
-
+        
+    def set_email_resp(self, novo_email_resp):
+        self.__email_resp = novo_email_resp
+    
+    def set_registro_academ(self, novo_registro):
+        self.__registro_academ = novo_registro
+    
+    def set_turma(self, nova_turma):
+        self.__turma = nova_turma
+    
+    def set_curso(self):
+        if self.__medio_superior:
+            return self.__curso
+        return None 
+    
     def set_curso(self, curso: str):
         if self.__medio_superior:
             if curso in ["mecatrônica", "eletromecânica", "informática"]:
@@ -67,12 +90,6 @@ class Aluno(Pessoa):
             self.__bacharel_pedago = bacharel_pedago
         else:
             raise AttributeError("Alunos do ensino médio não possuem bacharelado em pedagogia.")
-        
-    def set_status(self, novo_status):
-        if novo_status in [0, 1]:
-            self.__status = novo_status
-        else:
-            raise ValueError("O status deve ser 0 ou 1")
 
     # def __str__(self):
     #     return f'''

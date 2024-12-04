@@ -1,10 +1,13 @@
+from aluno import Aluno
+
 class Turma:
-    def __init__(self, nome: str, segmento: str, curso: str, ano: int, disciplinas: list):
+    def __init__(self, nome: str, segmento: str, curso: str, ano: int, disciplinas: list, alunos: list):
         self.__nome = nome
         self.__segmento = segmento  # EM ou Superior
         self.__curso = curso
         self.__ano = ano
         self.__disciplinas = disciplinas
+        self.__alunos = alunos
 
     # Getters
     def get_nome(self):
@@ -21,6 +24,9 @@ class Turma:
 
     def get_disciplinas(self):
         return self.__disciplinas
+    
+    def get_alunos(self):
+        return self.__alunos
 
     # Setters
     def set_nome(self, novo_nome: str):
@@ -46,3 +52,13 @@ class Turma:
             self.__disciplinas = novas_disciplinas
         else:
             raise ValueError("As disciplinas devem ser fornecidas como uma lista.")
+    
+    #editar alunos
+    def add_alunos(self, novo_aluno: Aluno):
+        self.__alunos += novo_aluno
+    def remove_aluno(self, remov_aluno: Aluno):
+        for i in range(len(self.__alunos)):
+            if get_registro_academ(self.__alunos[i]) == get_registro_academ(remov_aluno):
+                del self.__alunos[i]
+
+                
