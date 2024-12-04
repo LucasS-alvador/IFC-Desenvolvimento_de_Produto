@@ -1,8 +1,22 @@
 from pessoa import Pessoa
 
 class Aluno(Pessoa):
-    def __init__(self, nome: str, sobrenome: str, nome_user: str, endereco: str, email: str, senha:str, status,
-                 medio_superior: bool, email_resp: str, registro_academ: str, turma: str, bacharel_ciencias=False, bacharel_pedago=False, curso="eletro"):
+    def __init__(self, nome: str,
+                 sobrenome: str, 
+                 nome_user: str, 
+                 endereco: str,
+                 email: str, 
+                 senha:str,
+                 #herança de classe pessoa
+                 medio_superior: bool, 
+                 email_resp: str, 
+                 registro_academ: str,
+                 turma: str, 
+                 bacharel_ciencias=False, 
+                 bacharel_pedago=False, 
+                 curso="mecatrônica", 
+                 status=1):
+        
         super().__init__(nome, sobrenome, nome_user, endereco, email, senha, status)
         self.__medio_superior = medio_superior
         self.__email_resp = email_resp
