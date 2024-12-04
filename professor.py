@@ -1,14 +1,15 @@
 from pessoa import Pessoa
+from turma import Turma
 
 class Professor(Pessoa):
-    def __init__(self, nome: str, sobrenome: str, cpf: str, endereco: str, email: str,
-                 formacao: str, disciplinas: list, segmentos: list, username: str, senha: str):
-        super().__init__(nome, sobrenome, cpf, endereco, email)  # Inicializa os atributos da classe base
+    def __init__(self, nome: str, sobrenome: str, nome_user: str, endereco: str, email: str, senha:str,
+                 formacao: str, disciplinas: list, segmentos: list, turmas: list, cpf: str, status):
+        super().__init__(nome, sobrenome, nome_user, endereco, email, senha, status)  # Inicializa os atributos da classe base
         self.__formacao = formacao
         self.__disciplinas = disciplinas
         self.__segmentos = segmentos
-        self.__username = username
-        self.__senha = senha
+        self.__turmas = turmas
+        self.__cpf = cpf
 
     # Getters
     def get_formacao(self):
@@ -19,12 +20,12 @@ class Professor(Pessoa):
 
     def get_segmentos(self):
         return self.__segmentos
-
-    def get_username(self):
-        return self.__username
-
-    def get_senha(self):
-        return self.__senha
+    
+    def get_turmas(self):
+        return self.__turmas
+    
+    def get_cpf(self):
+        return self.__cpf
 
     # Setters
     def set_formacao(self, nova_formacao: str):
@@ -45,14 +46,32 @@ class Professor(Pessoa):
         else:
             raise ValueError("Os segmentos devem ser fornecidos como uma lista.")
 
-    def set_username(self, novo_username: str):
-        if isinstance(novo_username, str) and novo_username.strip():
-            self.__username = novo_username
-        else:
-            raise ValueError("O nome de usuário deve ser uma string não vazia.")
+    # def set_username(self, novo_username: str):
+    #     if isinstance(novo_username, str) and novo_username.strip():
+    #         self.__username = novo_username
+    #     else:
+    #         raise ValueError("O nome de usuário deve ser uma string não vazia.")
 
-    def set_senha(self, nova_senha: str):
-        if isinstance(nova_senha, str) and len(nova_senha) >= 6:
-            self.__senha = nova_senha
+    # def set_senha(self, nova_senha: str):
+    #     if isinstance(nova_senha, str) and len(nova_senha) >= 6:
+    #         self.__senha = nova_senha
+    #     else:
+    #         raise ValueError("A senha deve ser uma string com pelo menos 6 caracteres.")
+        
+    def set_turmas(self, nova_turmas: str):
+        if isinstance(nova_turmas, list) and nova_turmas.strip():
+            self.__turmas = nova_turmas
         else:
-            raise ValueError("A senha deve ser uma string com pelo menos 6 caracteres.")
+            raise ValueError("As turmas devem ser fornecidas como uma lista.")
+        
+    def set_cpf(self, novo_cpf: str):
+        if self.__status:
+            self.__cpf = novo_cpf
+        else:
+            raise Exception("Entidade desativada, valores não podem ser modificados") 
+        
+    # def set_status(self, novo_status: int):
+    #     if novo_status in [0, 1]:
+    #         self.__status = novo_status
+    #     else:
+    #         raise ValueError("O status deve ser 0 ou 1")

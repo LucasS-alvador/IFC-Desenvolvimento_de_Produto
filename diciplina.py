@@ -1,9 +1,10 @@
 class Disciplina:
-    def __init__(self, identificador: int, descricao: str, segmento: str, professor: list):
+    def __init__(self, identificador: int, descricao: str, segmento: list, professor: list, status=1):
         self.__identificador = identificador
         self.__descricao = descricao
         self.__segmento = segmento  # EM ou Superior
         self.__professor = professor
+        self.__status = status
 
     # Getters
     def get_identificador(self):
@@ -17,6 +18,9 @@ class Disciplina:
 
     def get_professor(self):
         return self.__professor
+    
+    def get_status(self):
+        return self.__status
 
     # Setters
     def set_identificador(self, novo_identificador: int):
@@ -31,14 +35,18 @@ class Disciplina:
         else:
             raise ValueError("A descrição deve ser uma string não vazia.")
 
-    def set_segmento(self, novo_segmento: str):
-        if novo_segmento in ["EM", "Superior"]:
-            self.__segmento = novo_segmento
+    def set_segmento(self, novos_segmentos: list):
+        if all(i in ["EM", "Superior"] for i in novos_segmentos):
+            self.__segmento = novos_segmentos
         else:
-            raise ValueError("Segmento inválido. Deve ser 'EM' ou 'Superior'.")
+            raise ValueError("Segmentos inválidos. Devem ser 'EM' ou 'Superior'.")
 
     def set_professor(self, novo_professor: list):
         if isinstance(novo_professor, list):
             self.__professor = novo_professor
         else:
             raise ValueError("Os professores devem ser fornecidos como uma lista.")
+        
+    def set_status(self, novo_status):
+        if novo_status in [0,1]:
+            self.__status = novo_status
