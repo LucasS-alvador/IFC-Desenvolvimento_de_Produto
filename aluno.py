@@ -57,6 +57,8 @@ class Aluno(Pessoa):
         if not self.__medio_superior:
             return self.__bacharel_pedago
         return None
+    def get_status(self):
+        return self.__status
 
     # Setters
     def set_medio_superior(self, novo_medio_superior: bool):
