@@ -89,12 +89,12 @@ class Aluno(Pessoa):
             raise Exception("Entidade desativada, valores não podem ser modificados")
         self.__turma = nova_turma
     
-    def set_curso(self):
-        if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
-        if self.__medio_superior:
-            return self.__curso
-        return None 
+    #def set_curso(self):
+    #    if not self.__status:
+    #        raise Exception("Entidade desativada, valores não podem ser modificados")
+    #    if self.__medio_superior:
+    #        return self.__curso
+    #    return None 
     
     def set_curso(self, curso: str):
         if not self.__status:
