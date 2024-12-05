@@ -123,6 +123,11 @@ class Aluno(Pessoa):
         else:
             raise AttributeError("Alunos do ensino médio não possuem bacharelado em pedagogia.")
 
+    def set_status(self, novo_status):
+        if novo_status in [0, 1]:
+            self.__status = novo_status
+        else:
+            print("Status deve ser 0 ou 1")
     # def __str__(self):
     #     return f'''
     #     Nome:{self.get_nome()}
