@@ -1,4 +1,5 @@
 from pessoa import Pessoa
+from cor import cor
 
 class Professor(Pessoa):
     def __init__(self, nome: str, 
@@ -69,7 +70,8 @@ class Professor(Pessoa):
     # Setters
     def set_formacao(self, nova_formacao: str):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if isinstance(nova_formacao, str) and nova_formacao.strip():
             self.__formacao = nova_formacao
         else:
@@ -77,7 +79,8 @@ class Professor(Pessoa):
 
     def set_disciplinas(self, novas_disciplinas: list):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if isinstance(novas_disciplinas, list):
             self.__disciplinas = novas_disciplinas
         else:
@@ -85,27 +88,17 @@ class Professor(Pessoa):
 
     def set_segmentos(self, novos_segmentos: list):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if isinstance(novos_segmentos, list):
             self.__segmentos = novos_segmentos
         else:
             raise ValueError("Os segmentos devem ser fornecidos como uma lista.")
-
-    # def set_username(self, novo_username: str):
-    #     if isinstance(novo_username, str) and novo_username.strip():
-    #         self.__username = novo_username
-    #     else:
-    #         raise ValueError("O nome de usuário deve ser uma string não vazia.")
-
-    # def set_senha(self, nova_senha: str):
-    #     if isinstance(nova_senha, str) and len(nova_senha) >= 6:
-    #         self.__senha = nova_senha
-    #     else:
-    #         raise ValueError("A senha deve ser uma string com pelo menos 6 caracteres.")
         
     def set_turmas(self, nova_turmas: str):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if isinstance(nova_turmas, list) and nova_turmas.strip():
             self.__turmas = nova_turmas
         else:
@@ -113,14 +106,9 @@ class Professor(Pessoa):
         
     def set_cpf(self, novo_cpf: str):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if self.__status:
             self.__cpf = novo_cpf
         else:
-            raise Exception("Entidade desativada, valores não podem ser modificados") 
-        
-    # def set_status(self, novo_status: int):
-    #     if novo_status in [0, 1]:
-    #         self.__status = novo_status
-    #     else:
-    #         raise ValueError("O status deve ser 0 ou 1")
+            raise Exception("Entidade desativada, valores não podem ser modificados")

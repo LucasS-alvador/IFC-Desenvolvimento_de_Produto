@@ -1,3 +1,5 @@
+from cor import cor
+
 class Disciplina:
     def __init__(self, identificador: int, 
                  descricao: str, 
@@ -44,7 +46,8 @@ class Disciplina:
     # Setters
     def set_identificador(self, novo_identificador: int):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if isinstance(novo_identificador, int) and novo_identificador > 0:
             self.__identificador = novo_identificador
         else:
@@ -52,7 +55,8 @@ class Disciplina:
 
     def set_descricao(self, nova_descricao: str):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if isinstance(nova_descricao, str) and nova_descricao.strip():
             self.__descricao = nova_descricao
         else:
@@ -60,7 +64,8 @@ class Disciplina:
 
     def set_segmento(self, novos_segmentos: list):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if all(i in ["EM", "Superior"] for i in novos_segmentos):
             self.__segmento = novos_segmentos
         else:
@@ -68,7 +73,8 @@ class Disciplina:
 
     def set_professor(self, novo_professor: list):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if isinstance(novo_professor, list):
             self.__professor = novo_professor
         else:

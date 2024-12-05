@@ -2,12 +2,7 @@ from aluno import Aluno
 from professor import Professor
 from turma import Turma
 from diciplina import Disciplina
-
-cor = {
-    "final": "\033[0m",
-    "verde": "\033[0;32m",
-    "vermelho": "\033[0;31m",
-}
+from cor import cor
 
 professor1 = Professor(
     nome="Carlos",
@@ -139,14 +134,14 @@ def menu_aluno(aluno):
                     regiacade = input("Novo registro acadêmico:")
                     aluno.set_registro_academ(regiacade)
                 elif sub_escolha == 6:
-                    segmentos = input("Novos segmentos (separados por vírgula): ").split(", ")
+                    segmentos = input("Novo segmento: ")
                     aluno.set_segmentos(segmentos)
                 elif sub_escolha == 7:
                     turmas = input("Novas turmas (separadas por vírgula): ").split(", ")
                     aluno.set_turmas(turmas)
                 elif sub_escolha == 8:
-                    username = input("Novo nome de usuário: ")
-                    aluno.set_nome_user(username)
+                    nome_user = input("Novo nome de usuário: ")
+                    aluno.set_nome_user(nome_user)
                 elif sub_escolha == 9:
                     senha = input("Nova senha: ")
                     aluno.set_senha(senha)

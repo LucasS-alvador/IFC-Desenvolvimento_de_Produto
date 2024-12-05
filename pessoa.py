@@ -1,3 +1,5 @@
+from cor import cor
+
 class Pessoa:
     def __init__(self, 
                  nome: str, 
@@ -40,42 +42,51 @@ class Pessoa:
     # Setters
     
     def set_nome(self, novo_nome: str):
+        if not self.__status:
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if self.__status:
             self.__nome = novo_nome
-        else:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
 
     def set_sobrenome(self, novo_sobrenome: str):
+        if not self.__status:
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if self.__status:
             self.__sobrenome = novo_sobrenome
-        else:
-            raise Exception("Entidade desativada, valores não podem ser modificados")        
 
     def set_nome_user(self, novo_nome_user):
+        if not self.__status:
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if self.__status:
             self.__nome_user = novo_nome_user
-        else:
-            raise Exception("Entidade desativada, valores não podem ser modificados") 
 
     def set_endereco(self, novo_endereco: str):
+        if not self.__status:
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if self.__status:
             self.__endereco = novo_endereco
-        else:
-            raise Exception("Entidade desativada, valores não podem ser modificados") 
 
     def set_email(self, novo_email: str):
+        if not self.__status:
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if self.__status:
             self.__email = novo_email
-        else:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
         
     def set_senha(self, nova_senha: str):
+        if not self.__status:
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if self.__status:
             self.__senha = nova_senha
-        else:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
     
     def set_status(self, novo_status):
+        if not self.__status:
+            print("Entidade desativada, valores não podem ser modificados")
+            return
         if novo_status in [0, 1]:
             self.__status = novo_status
         else:
