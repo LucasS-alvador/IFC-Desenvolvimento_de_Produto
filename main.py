@@ -3,6 +3,12 @@ from professor import Professor
 from turma import Turma
 from diciplina import Disciplina
 
+cor = {
+    "final": "\033[0m",
+    "verde": "\033[0;32m",
+    "vermelho": "\033[0;31m",
+}
+
 professor1 = Professor(
     nome="Carlos",
     sobrenome="Silva",
@@ -14,16 +20,20 @@ professor1 = Professor(
     segmentos=["EM", "Superior"],
     nome_user="carlos.silva",
     senha="senha123",
-    turmas=["201info","202eletro"])
+    turmas=["201info","302meca"])
 
-# print(professor1.get_formacao())     
-# print(professor1.get_disciplinas())  
-# print(professor1.get_segmentos())    
-# print(professor1.get_username())     
-
-# professor1.set_formacao("Doutorado em Matemática")
-
-# print(professor1.get_formacao())  
+professor2 = Professor(
+    nome="João",
+    sobrenome="Pereira",
+    cpf="987.654.321-01",
+    endereco="Rua DEF, 456",
+    email="joao@email.com",
+    formacao="Doutorado em Física",
+    disciplinas=["Física", "Química"],
+    segmentos=["EM"],
+    nome_user="joao.pereira",
+    senha="senha456",
+    turmas=["301info","302meca"])
 
 aluno1 = Aluno(
     nome="João", 
@@ -41,42 +51,53 @@ aluno1 = Aluno(
     bacharel_pedago=False,
     curso="mecatrônica")
 
+aluno2 = Aluno(
+    nome="Ronaldo",
+    sobrenome="Monteiro",
+    nome_user= "ronaldomonteiro",
+    endereco="Rua B",
+    email="ronaldo@email.com",
+    senha="1234567890",
+    medio_superior=False,
+    status= True,
+    email_resp="ronaldomonteiro.mae@gmail.com",
+    registro_academ="Ronaldo123",
+    turma="202-MECA",
+    bacharel_ciencias=True,
+    bacharel_pedago=False,
+    curso="mecatrônica")
+
 disciplina1 = Disciplina(
     identificador="019273908217301",
-    descricao="anos semestral",
+    descricao="Matemática",
     segmento="EM",
-    professor="Carlos"
-)
+    professor="Carlos")
 
-# print(f"Curso atual: {aluno1._Aluno__curso}") 
+disciplina2 = Disciplina(
+    identificador="019273908217302",
+    descricao="Química",
+    segmento="EM",
+    professor="João")
 
-# print(aluno1.set_curso("informática"))
+turma1 = Turma(
+    nome = "MECA 201",
+    segmento = "EM",
+    ano = 2077,
+    curso = "Mecatrônica",
+    disciplinas = [disciplina1, disciplina2],
+    alunos = [aluno1, aluno2])
 
-# print(aluno1._Aluno__curso)
+professores = [professor1, professor2]
+alunos = [aluno1, aluno2]
+disciplinas = [disciplina1, disciplina2]
+turmas = [turma1]
+
 choose = 0
-
-# while True:
-#     if choose == 1:
-#         novo_c = input("Escolha entre(mecatrônica, eletromecânica, informática)\n")
-#         try:
-#             aluno1.set_curso(novo_c)
-#             print(f"Seu curso agora é {aluno1._Aluno__curso}\n")
-#         except ValueError:
-#            print("Houve um erro de digitação\n")
-#     elif choose == 2:
-#         print(aluno1)
-#     elif choose == 3:
-#         aluno1.editar_dados()
-
-#     print("1 - Transferir Curso\n2 - Listar Dados\n3 - Editar Dados\n4 - Desativar Aluno\n5 - Reativar Aluno\n")
-#     choose = int(input("Oque voçê deseja fazer:"))
-#     if not isinstance(choose, int) or choose < 1 or choose > 5:
-#         print("Opção inválida, deve ser um número entre 1 e 5, inclusivo")
-#         choose = 0
 
 def menu_aluno(aluno):
     while True:
-        print("\n--- Menu de Opções ---")
+        print(f"\n--- {cor['verde']}Menu do Aluno{cor['final']} ---")
+        print(f"Agora editando: {aluno.get_nome()} {aluno.get_sobrenome()}")
         print("1 - Editar Dados")
         print("2 - Listar Dados")
         print("3 - Desativar Aluno")
@@ -85,7 +106,7 @@ def menu_aluno(aluno):
         print("6 - Sair")
 
         try:
-            escolha = int(input("Escolha uma opção: "))
+            escolha = int(input("\nEscolha uma opção: "))
             
             if escolha == 1:  # Editar dados
                 print("\n--- Editar Dados ---")
@@ -130,7 +151,7 @@ def menu_aluno(aluno):
                     senha = input("Nova senha: ")
                     aluno.set_senha(senha)
                 else:
-                    print("Opção inválida para edição.")
+                    print(f"Opção inválida para edição.")
             
             elif escolha == 2:  # Listar dados
                 print("\n--- Dados do Aluno ---")
@@ -158,19 +179,19 @@ def menu_aluno(aluno):
                 break
             
             elif escolha == 6:  # Sair do menu
-                print("Saindo...")
+                print(f"{cor['vermelho']}Saindo...{cor['final']}")
                 break
             
             else:
-                print("Opção inválida, escolha um número entre 1 e 6.")
+                print(f"{cor['vermelho']}Opção inválida,{cor['final']} escolha um número entre 1 e 6.")
         
         except ValueError:
-            print("Entrada inválida. Por favor, digite um número.")
-
+            print(f"{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
 
 def menu_professor(professor):
     while True:
-        print("\n--- Menu de Opções ---")
+        print(f"\n--- {cor['verde']}Menu do Professor{cor['final']} ---")
+        print(f"Agora editando: {professor.get_nome()} {professor.get_sobrenome()}")
         print("1 - Editar Dados")
         print("2 - Listar Dados")
         print("3 - Desativar Professor")
@@ -179,7 +200,7 @@ def menu_professor(professor):
         print("6 - Sair")
 
         try:
-            escolha = int(input("Escolha uma opção: "))
+            escolha = int(input("\nEscolha uma opção: "))
             
             if escolha == 1:  # Editar dados
                 print("\n--- Editar Dados ---")
@@ -224,7 +245,7 @@ def menu_professor(professor):
                     senha = input("Nova senha: ")
                     professor.set_senha(senha)
                 else:
-                    print("Opção inválida para edição.")
+                    print(f"Opção inválida para edição.")
             
             elif escolha == 2:  # Listar dados
                 print("\n--- Dados do Professor ---")
@@ -254,43 +275,111 @@ def menu_professor(professor):
                 break
             
             elif escolha == 6:  # Sair do menu
-                print("Saindo...")
+                print(f"{cor['vermelho']}Saindo...{cor['final']}")
                 break
             
             else:
-                print("Opção inválida, escolha um número entre 1 e 6.")
+                print(f"{cor['vermelho']}Opção inválida,{cor['final']} escolha um número entre 1 e 6.")
         
         except ValueError:
-            print("Entrada inválida. Por favor, digite um número.")
+            print(f"{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
 
-# Chamando o menu para o professor
-print("menu professor")
-menu_professor(professor1)
+def menu_disciplina(disciplina):
+
+    while True:
+        print(f"\n--- {cor['verde']}Menu da Disciplina{cor['final']} ---")
+        print(f"Agora editando: {disciplina.get_descricao()}")
+        print("1 - Editar Dados")
+        print("2 - Listar Dados")
+        print("3 - Desativar Disciplina")
+        print("4 - Reativar Disciplina")
+        print("5 - Excluir Disciplina")
+        print("6 - Sair")
+
+        try:
+            escolha = int(input("\nEscolha uma opção: "))
+            
+            if escolha == 1:  # Editar dados
+                print("\n--- Editar Dados ---")
+                print("1 - Identificador")
+                print("2 - Descricao")
+                print("3 - segmento")
+                print("4 - Professor")
+                print("5 - Status")
+                sub_escolha = int(input("Escolha uma opção: "))
+
+                if sub_escolha == 1:
+                    identificador = int(input("Novo Identificador: "))
+                    disciplina.set_identificador(identificador)
+                elif sub_escolha == 2:
+                    descricao = input("Nova Descricao: ")
+                    disciplina.set_descricao(descricao)
+                elif sub_escolha == 3:
+                    segmentos = input("Novo Segmento: ")
+                    disciplina.set_segmento(segmentos)
+                elif sub_escolha == 4:
+                    professor = input("Nova formação: ")
+                    disciplina.set_professor(professor)
+                elif sub_escolha == 5:
+                    status = input("Novo Status:  ")
+                    disciplina.set_status(status)
+                else:
+                    print("Opção inválida para edição.")
+            
+            elif escolha == 2:  # Listar dados
+                print("\n--- Dados do Disciplina ---")
+                print(f"Identificador: {disciplina.get_identificador()}")
+                print(f"Descricao: {disciplina.get_descricao()}")
+                print(f"Segmento: {disciplina.get_segmento()}")
+                print(f"Professor: {disciplina.get_professor()}")
+                print(f"Status: {disciplina.get_status()}")
+            
+            elif escolha == 3:  # Desativar Disciplina
+                disciplina.set_status(0)
+                print("Disciplina desativada com sucesso.")
+            
+            elif escolha == 4:  # Reativar Disciplina
+                disciplina.set_status(1)
+                print("Disciplina reativada com sucesso.")
+            
+            elif escolha == 5:  # Excluir Disciplina
+                del disciplina
+                print("Disciplina excluída com sucesso. Encerrando menu...")
+                break
+            
+            elif escolha == 6:  # Sair do menu
+                print(f"{cor['vermelho']}Saindo...{cor['final']}")
+                break
+            
+            else:
+                print(f"{cor['vermelho']}Opção inválida,{cor['final']} escolha um número entre 1 e 6.")
+        
+        except ValueError:
+            print(f"{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
 
 def menu_turma(turma):
-    print("\n--- Menu de Opções ---")
-    print("1 - Editar Dados")
-    print("2 - Listar Dados")
-    print("3 - Desativar Turma")
-    print("4 - Reativar Turma")
-    print("5 - Excluir Turma")
-    print("6 - Sair")
     while True:
-    
+        print(f"\n--- {cor['verde']}Menu da Turma{cor['final']} ---")
+        print(f"Agora editando: {turma.get_nome()}")
+        print("1 - Editar Dados")
+        print("2 - Listar Dados")
+        print("3 - Desativar Turma")
+        print("4 - Reativar Turma")
+        print("5 - Excluir Turma")
+        print("6 - Sair")
+
         try:
-            escolha = int(input("Escolha uma opção: "))
+            escolha = int(input("\nEscolha uma opção: "))
                 
             if escolha == 1:  # Editar dados (em casa?) da turma
                 print("\n--- Editar Dados ---")
-                print("1 - Nome e Sobrenome")
-                print("2 - Endereço")
-                print("3 - E-mail")
-                print("4 - Formação")
-                print("5 - Disciplinas")
-                print("6 - Segmentos")
-                print("7 - Turmas")
-                print("8 - Nome de Usuário")
-                print("9 - Senha")
+                print("1 - Nome")
+                print("2 - Disciplinas")
+                print("3 - Segmento")
+                print("4 - Curso")
+                print("5 - Ano")
+                print("6 - Alunos")
+
                 sub_escolha = int(input("Escolha uma opção: "))
 
                 if sub_escolha == 1:
@@ -300,8 +389,8 @@ def menu_turma(turma):
                     disciplinas = input("Novas disciplinas (separadas por vírgula): ").split(", ")
                     turma.set_disciplinas(disciplinas)
                 elif sub_escolha == 3:
-                    segmentos = input("Novo segmento: ")
-                    turma.set_segmento(segmentos)
+                    segmento = input("Novo segmento: ")
+                    turma.set_segmento(segmento)
                 elif sub_escolha == 4:
                     curso  = input("Novo Curso: ")
                     turma.set_curso(curso)
@@ -325,95 +414,105 @@ def menu_turma(turma):
                 print(f"Alunos: {turma.get_alunos()}")
                 print(f"Ativa: {'Sim' if turma.get_status() else 'Não'}")
             
-            
             elif escolha == 3:  # Desativar turma
-                turma.set_status(False)
-                print("Professor desativado com sucesso.")
+                turma.set_status(0)
+                print("Turma desativada com sucesso.")
             
             elif escolha == 4:  # Reativar turma
-                turma.set_status(True)
-                print("Professor reativado com sucesso.")
+                turma.set_status(1)
+                print("Turma reativada com sucesso.")
             
             elif escolha == 5:  # Excluir turma
                 del turma
-                print("Professor excluído com sucesso. Encerrando menu...")
-            
-        except ValueError: "Digite um valor válido."
-
-
-
-
-def menu_diciplina(Disciplina):
-    while True:
-        print("\n--- Menu de Opções ---")
-        print("1 - Editar Dados")
-        print("2 - Listar Dados")
-        print("3 - Desativar Disciplina")
-        print("4 - Reativar Disciplina")
-        print("5 - Excluir Disciplina")
-        print("6 - Sair")
-
-        try:
-            escolha = int(input("Escolha uma opção: "))
-            
-            if escolha == 1:  # Editar dados
-                print("\n--- Editar Dados ---")
-                print("1 - Identificador")
-                print("2 - Descricao")
-                print("3 - segmento")
-                print("4 - Professor")
-                print("5 - Status")
-                sub_escolha = int(input("Escolha uma opção: "))
-
-                if sub_escolha == 1:
-                    identificador = int(input("Novo Identificador: "))
-                    Disciplina.set_identificador(identificador)
-                elif sub_escolha == 2:
-                    descricao = input("Nova Descricao: ")
-                    Disciplina.set_descricao(descricao)
-                elif sub_escolha == 3:
-                    segmentos = input("Novo Segmento: ")
-                    Disciplina.set_segmento(segmentos)
-                elif sub_escolha == 4:
-                    professor = input("Nova formação: ")
-                    Disciplina.set_professor(professor)
-                elif sub_escolha == 5:
-                    status = input("Novo Status:  ")
-                    Disciplina.set_status(status)
-                else:
-                    print("Opção inválida para edição.")
-            
-            elif escolha == 2:  # Listar dados
-                print("\n--- Dados do Disciplina ---")
-                print(f"Identificador: {Disciplina.get_identificador()}")
-                print(f"Descricao: {Disciplina.get_descricao()}")
-                print(f"Segmento: {Disciplina.get_segmento()}")
-                print(f"Professor: {Disciplina.get_professor()}")
-                print(f"Status: {Disciplina.get_status()}")
-            
-            elif escolha == 3:  # Desativar professor
-                Disciplina.set_status(0)
-                print("Professor desativado com sucesso.")
-            
-            elif escolha == 4:  # Reativar professor
-                Disciplina.set_status(1)
-                print("Professor reativado com sucesso.")
-            
-            elif escolha == 5:  # Excluir professor
-                del Disciplina
-                print("Professor excluído com sucesso. Encerrando menu...")
-                break
+                print("Turma excluída com sucesso. Encerrando menu...")
             
             elif escolha == 6:  # Sair do menu
-                print("Saindo...")
+                print(f"{cor['vermelho']}Saindo...{cor['final']}")
                 break
             
             else:
-                print("Opção inválida, escolha um número entre 1 e 6.")
+                print(f"{cor['vermelho']}Opção inválida,{cor['final']} escolha um número entre 1 e 6.")
         
         except ValueError:
-            print("Entrada inválida. Por favor, digite um número.")
+            print(f"{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
 
-# Chamando o menu para o professor
-print("menu disciplina")
-menu_diciplina(disciplina1)
+while True:
+    escolha = ""
+
+    print(f"\n--- {cor['verde']}Menu Principal{cor['final']} ---")
+    print("1 - Menu Aluno")
+    print("2 - Menu Professor")
+    print("3 - Menu Disciplina")
+    print("4 - Menu Turma")
+    print("5 - Sair")
+
+    try:
+        escolha = int(input("\nEscolha uma opção: "))
+
+        # menu aluno
+        if escolha == 1:
+            print("\nEscolha qual aluno você deseja acessar:")
+            for i in range(len(alunos)):
+                print(f"{i+1} - {alunos[i].get_nome()}")
+            try:
+                index = int(input("\nInsira a escolha: ")) - 1
+                if index >= 0 and index < len(alunos):
+                    menu_aluno(alunos[index])
+                else:
+                    print(f"\n{cor['vermelho']}Aluno inválido!{cor['final']}")
+            except:
+                print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+
+        # menu professor
+        elif escolha == 2:
+            print("\nEscolha qual professor você deseja acessar:")
+            for i in range(len(professores)):
+                print(f"{i+1} - {professores[i].get_nome()}")
+            try:
+                index = int(input("\nInsira a escolha: ")) - 1
+                if index >= 0 and index < len(professores):
+                    menu_professor(professores[index])
+                else:
+                    print(f"\n{cor['vermelho']}Professor inválido!{cor['final']}")
+            except:
+                print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+
+        # menu disciplina
+        elif escolha == 3:
+            print("\nEscolha qual disciplina você deseja acessar:")
+            for i in range(len(disciplinas)):
+                print(f"{i+1} - {disciplinas[i].get_descricao()}")
+            try:
+                index = int(input("\nInsira a escolha: ")) - 1
+                if index >= 0 and index < len(disciplinas):
+                    menu_disciplina(disciplinas[index])
+                else:
+                    print(f"\n{cor['vermelho']}Disciplina inválida!{cor['final']}")
+            except:
+                print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+        
+        # menu turma
+        elif escolha == 4:
+            print("\nEscolha qual turma você deseja acessar:")
+            for i in range(len(turmas)):
+                print(f"{i+1} - {turmas[i].get_nome()}")
+            try:
+                index = int(input("\nInsira a escolha: ")) - 1
+                if index >= 0 and index < len(turmas):
+                    menu_turma(turmas[index])
+                else:
+                    print(f"\n{cor['vermelho']}Turma inválida!{cor['final']}")
+            except:
+                print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+
+        # sair
+        elif escolha == 5:
+            print(f"\n{cor['vermelho']}Saindo...{cor['final']}")
+            break
+
+        # opção inválida
+        else:
+            print(f"\n{cor['vermelho']}Opção inválida{cor['final']}, escolha um número entre 1 e 5.")
+
+    except:
+        print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")

@@ -7,14 +7,22 @@ class Turma:
                  ano: int, 
                  disciplinas: list,
                  alunos: list,
-                 ativo: bool):
-        self.__ativo = ativo
+                 status=1):
+        self.__status = status
         self.__nome = nome
         self.__segmento = segmento  # EM ou Superior
         self.__curso = curso
         self.__ano = ano
-        self.__disciplinas = disciplinas
-        self.__alunos = alunos
+
+        if isinstance(disciplinas, list):
+            self.__disciplinas = disciplinas
+        else:
+            self.__disciplinas = [disciplinas]
+
+        if isinstance(alunos, list):
+            self.__alunos = alunos
+        else:
+            self.__alunos = [alunos]
 
         if self.__segmento == "EM":
             if len(self.__alunos) > 20:
@@ -37,13 +45,19 @@ class Turma:
         return self.__ano
 
     def get_disciplinas(self):
-        return self.__disciplinas
+        total = ""
+        for i in self.__disciplinas:
+            total += i.get_descricao() + ", "
+        return total
     
     def get_alunos(self):
-        return self.__alunos
+        total = ""
+        for i in self.__alunos:
+            total += i.get_nome() + ", "
+        return total
     
-    def get_ativo(self):
-        return self.__ativo
+    def get_status(self):
+        return self.__status
     
     
 
@@ -72,17 +86,20 @@ class Turma:
         else:
             raise ValueError("As disciplinas devem ser fornecidas como uma lista.")
         
-    def set_ativo(self, ativo: bool):
-        if isinstance(ativo, bool):
-            self.__ativo = ativo
+    def set_status(self, status: int):
+        if status in [0, 1]:
+            self.__status = status
         else:
-            raise ValueError("O parâmetro ativo deve ser um valor booleano.")
+            raise ValueError("O parâmetro status deve ser 0 ou 1.")
     
     #editar alunos
     def add_alunos(self, novo_aluno: Aluno):
         self.__alunos += novo_aluno
     def remove_aluno(self, remov_aluno: int):
-        del self.__alunos[remov_aluno]
+        if 0 <= remov_aluno < len(self.__alunos):
+            del self.__alunos[remov_aluno]
+        else:
+            print("Aluno fora da lista")
                 
     def validar_turma(self):
         if self.__segmento == "EM":
@@ -91,19 +108,11 @@ class Turma:
         elif self.__segmento == "Superior":
             if len(self.__alunos) > 5:
                 self.__ativo = False
-            
-    def desativar_turma(self):
-        print("Você deseja desativar a turma?")
-        escolha=input("Digite 'sim' para confirmar: ")
-        if escolha == 'sim':
-            self.__ativo = False
-        else:
-            print("Operação cancelada.")
 
-    def imprimir_turma(self):
-        imp_turma = input("Digite o nome da turma que deseja imprimir: ")
-        if imp_turma == self.__nome:
-            return(self.__nome, self.__segmento, self.__curso, self.__ano, self.__disciplinas, self.__ativo)
-
-
-                
+    # def desativar_turma(self):
+    #     print("Você deseja desativar a turma?")
+    #     escolha=input("Digite 'sim' para confirmar: ")
+    #     if escolha == 'sim':
+    #         self.__ativo = False
+    #     else:
+    #         print("Operação cancelada.")

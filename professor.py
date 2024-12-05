@@ -16,9 +16,21 @@ class Professor(Pessoa):
                  status=1):
         super().__init__(nome, sobrenome, nome_user, endereco, email, senha, status)  # Inicializa os atributos da classe base
         self.__formacao = formacao
-        self.__disciplinas = disciplinas
-        self.__segmentos = segmentos
-        self.__turmas = turmas
+        
+        if isinstance(disciplinas, list):
+            self.__disciplinas = disciplinas
+        else:
+            self.__disciplinas = [disciplinas]
+
+        if isinstance(segmentos, list):
+            self.__segmentos = segmentos
+        else:
+            self.__segmentos = [segmentos]
+
+        if isinstance(turmas, list):
+            self.__turmas = turmas
+        else:
+            self.__turmas = [turmas]
         self.__cpf = cpf
 
     # Getters
@@ -26,13 +38,22 @@ class Professor(Pessoa):
         return self.__formacao
 
     def get_disciplinas(self):
-        return self.__disciplinas
+        total = ""
+        for i in self.__disciplinas:
+            total += i + ", "
+        return total
 
     def get_segmentos(self):
-        return self.__segmentos
+        total = ""
+        for i in self.__segmentos:
+            total += i + ", "
+        return total
     
     def get_turmas(self):
-        return self.__turmas
+        total = ""
+        for i in self.__turmas:
+            total += i + ", "
+        return total
     
     def get_cpf(self):
         return self.__cpf

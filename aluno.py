@@ -59,9 +59,9 @@ class Aluno(Pessoa):
         return None
 
     # Setters
-    def set_medio_superior(self, medio_superior: bool):
-        self.__medio_superior = medio_superior
-        if medio_superior:
+    def set_medio_superior(self, novo_medio_superior: bool):
+        self.__medio_superior = novo_medio_superior
+        if novo_medio_superior:
             self.__curso = "mecatrônica"
             self.__bacharel_ciencias = False
             self.__bacharel_pedago = False

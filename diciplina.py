@@ -6,8 +6,17 @@ class Disciplina:
                  status=1):
         self.__identificador = identificador
         self.__descricao = descricao
-        self.__segmento = segmento  # EM ou Superior
-        self.__professor = professor
+        
+        if isinstance(segmento, list):
+            self.__segmento = segmento  # EM ou Superior
+        else:
+            self.__segmento = [segmento]
+
+        if isinstance(professor, list):
+            self.__professor = professor
+        else:
+            self.__professor = [professor]
+
         self.__status = status
 
     # Getters
@@ -18,10 +27,16 @@ class Disciplina:
         return self.__descricao
 
     def get_segmento(self):
-        return self.__segmento
+        total = ""
+        for i in self.__segmento:
+            total += i + ", "
+        return total
 
     def get_professor(self):
-        return self.__professor
+        total = ""
+        for i in self.__professor:
+            total += i + ", "
+        return total
     
     def get_status(self):
         return self.__status
