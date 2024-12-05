@@ -76,7 +76,4 @@ class Pessoa:
             raise Exception("Entidade desativada, valores não podem ser modificados")
     
     def set_status(self, novo_status: str):
-        if self.__status:
-            self.__status = novo_status
-        else:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+        self.__status = novo_status
