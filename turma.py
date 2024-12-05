@@ -25,11 +25,11 @@ class Turma:
             self.__alunos = [alunos]
 
         if self.__segmento == "EM":
-            if len(self.__alunos) > 20:
-                self.__ativo = False
+            if len(self.__alunos) < 20:
+                self.__status = 0
         elif self.__segmento == "Superior":
-            if len(self.__alunos) > 5:
-                self.__ativo = False
+            if len(self.__alunos) < 5:
+                self.__status = 0
 
     # Getters
     def get_nome(self):
