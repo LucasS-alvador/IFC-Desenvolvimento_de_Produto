@@ -43,7 +43,7 @@ aluno1 = Aluno(
     email="joao@email.com",
     senha="1234567890",
     medio_superior=True, 
-    status= True,
+    status= 1,
     email_resp="paidojoao@gmail.com",
     registro_academ="Joao4321",
     turma="201-MECA",
@@ -59,7 +59,7 @@ aluno2 = Aluno(
     email="ronaldo@email.com",
     senha="1234567890",
     medio_superior=False,
-    status= True,
+    status= 1,
     email_resp="ronaldomonteiro.mae@gmail.com",
     registro_academ="Ronaldo123",
     turma="202-MECA",
@@ -105,7 +105,7 @@ def menu_aluno(aluno):
         print("5 - Excluir Aluno")
         print("6 - Sair")
 
-        try:
+        if True:
             escolha = int(input("\nEscolha uma opção: "))
             
             if escolha == 1:  # Editar dados
@@ -146,7 +146,7 @@ def menu_aluno(aluno):
                     aluno.set_turmas(turmas)
                 elif sub_escolha == 8:
                     username = input("Novo nome de usuário: ")
-                    aluno.set_username(username)
+                    aluno.set_nome_user(username)
                 elif sub_escolha == 9:
                     senha = input("Nova senha: ")
                     aluno.set_senha(senha)
@@ -185,8 +185,8 @@ def menu_aluno(aluno):
             else:
                 print(f"{cor['vermelho']}Opção inválida,{cor['final']} escolha um número entre 1 e 6.")
         
-        except ValueError:
-            print(f"{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+        #except ValueError:
+        #    print(f"{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
 
 def menu_professor(professor):
     while True:
@@ -249,7 +249,7 @@ def menu_professor(professor):
             
             elif escolha == 2:  # Listar dados
                 print("\n--- Dados do Professor ---")
-                print(f"Nome: {professor.get_nome(), professor.get_sobrenome()}")
+                print(f"Nome: {professor.get_nome()} {professor.get_sobrenome()}")
                 print(f"CPF: {professor.get_cpf()}")
                 print(f"Endereço: {professor.get_endereco()}")
                 print(f"E-mail: {professor.get_email()}")
@@ -454,14 +454,14 @@ while True:
             print("\nEscolha qual aluno você deseja acessar:")
             for i in range(len(alunos)):
                 print(f"{i+1} - {alunos[i].get_nome()}")
-            try:
+            if True:
                 index = int(input("\nInsira a escolha: ")) - 1
                 if index >= 0 and index < len(alunos):
                     menu_aluno(alunos[index])
                 else:
                     print(f"\n{cor['vermelho']}Aluno inválido!{cor['final']}")
-            except:
-                print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+            #except:
+                #print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
 
         # menu professor
         elif escolha == 2:

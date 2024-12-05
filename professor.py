@@ -14,7 +14,15 @@ class Professor(Pessoa):
                  turmas: list, 
                  cpf: str, 
                  status=1):
-        super().__init__(nome, sobrenome, nome_user, endereco, email, senha, status)  # Inicializa os atributos da classe base
+        
+        super().__init__(nome, 
+        sobrenome, 
+        nome_user, 
+        endereco, 
+        email, 
+        senha, 
+        status)  # Inicializa os atributos da classe base
+        
         self.__formacao = formacao
         
         if isinstance(disciplinas, list):

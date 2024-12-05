@@ -6,7 +6,7 @@ class Pessoa:
                  endereco: str, 
                  email: str, 
                  senha:str, 
-                 status=1):
+                 status):
         self.__nome = nome
         self.__sobrenome = sobrenome
         self.__nome_user = nome_user
@@ -75,5 +75,8 @@ class Pessoa:
         else:
             raise Exception("Entidade desativada, valores não podem ser modificados")
     
-    def set_status(self, novo_status: str):
-        self.__status = novo_status
+    def set_status(self, novo_status):
+        if novo_status in [0, 1]:
+            self.__status = novo_status
+        else:
+            print("Status deve ser 0 ou 1")

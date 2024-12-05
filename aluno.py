@@ -1,7 +1,8 @@
 from pessoa import Pessoa
 
 class Aluno(Pessoa):
-    def __init__(self, nome: str,
+    def __init__(self, 
+                 nome: str,
                  sobrenome: str, 
                  nome_user: str, 
                  endereco: str,
@@ -15,9 +16,17 @@ class Aluno(Pessoa):
                  bacharel_ciencias=False, 
                  bacharel_pedago=False, 
                  curso="mecatrônica", 
-                 status=1):
+                 status = 1
+                 ):
         
-        super().__init__(nome, sobrenome, nome_user, endereco, email, senha, status)
+        super().__init__(nome, 
+        sobrenome, 
+        nome_user, 
+        endereco, 
+        email, 
+        senha, 
+        status)
+        
         self.__medio_superior = medio_superior
         self.__email_resp = email_resp
         self.__registro_academ = registro_academ
@@ -57,8 +66,6 @@ class Aluno(Pessoa):
         if not self.__medio_superior:
             return self.__bacharel_pedago
         return None
-    def get_status(self):
-        return self.__status
 
     # Setters
     def set_medio_superior(self, novo_medio_superior: bool):
@@ -117,17 +124,13 @@ class Aluno(Pessoa):
 
     def set_bacharel_pedago(self, bacharel_pedago: bool):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            print("Entidade desativada, valores não podem ser modificados")
         if not self.__medio_superior:
             self.__bacharel_pedago = bacharel_pedago
+            print("Editado com sucesso!")
         else:
             raise AttributeError("Alunos do ensino médio não possuem bacharelado em pedagogia.")
 
-    def set_status(self, novo_status):
-        if novo_status in [0, 1]:
-            self.__status = novo_status
-        else:
-            print("Status deve ser 0 ou 1")
     # def __str__(self):
     #     return f'''
     #     Nome:{self.get_nome()}
@@ -177,3 +180,21 @@ class Aluno(Pessoa):
     #         self.set_bacharel_pedago(novo_pedagogia)
     #     else:
     #         print("Opção inválida.")
+
+aluno1 = Aluno(
+    nome="João", 
+    sobrenome="Silva", 
+    nome_user= "joao123",
+    endereco="Rua A", 
+    email="joao@email.com",
+    senha="1234567890",
+    medio_superior=True, 
+    status=1,
+    email_resp="paidojoao@gmail.com",
+    registro_academ="Joao4321",
+    turma="201-MECA",
+    bacharel_ciencias=False,
+    bacharel_pedago=False,
+    curso="mecatrônica"
+)
+aluno1.get_status()
