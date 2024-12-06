@@ -1,4 +1,5 @@
 from pessoa import Pessoa
+from cor import cors
 
 class Professor(Pessoa):
     def __init__(self, nome: str, 
@@ -68,26 +69,29 @@ class Professor(Pessoa):
 
     # Setters
     def set_formacao(self, nova_formacao: str):
-        if not self.__status:
+        if not self.get_status():
             raise Exception("Entidade desativada, valores não podem ser modificados")
         if isinstance(nova_formacao, str) and nova_formacao.strip():
             self.__formacao = nova_formacao
+            print("Editado com sucesso!")
         else:
             raise ValueError("A formação deve ser uma string não vazia.")
 
     def set_disciplinas(self, novas_disciplinas: list):
-        if not self.__status:
+        if not self.get_status():
             raise Exception("Entidade desativada, valores não podem ser modificados")
         if isinstance(novas_disciplinas, list):
             self.__disciplinas = novas_disciplinas
+            print("Editado com sucesso!")
         else:
             raise ValueError("As disciplinas devem ser fornecidas como uma lista.")
 
     def set_segmentos(self, novos_segmentos: list):
-        if not self.__status:
+        if not self.get_status():
             raise Exception("Entidade desativada, valores não podem ser modificados")
         if isinstance(novos_segmentos, list):
             self.__segmentos = novos_segmentos
+            print("Editado com sucesso!")
         else:
             raise ValueError("Os segmentos devem ser fornecidos como uma lista.")
 
@@ -104,18 +108,20 @@ class Professor(Pessoa):
     #         raise ValueError("A senha deve ser uma string com pelo menos 6 caracteres.")
         
     def set_turmas(self, nova_turmas: str):
-        if not self.__status:
+        if not self.get_status():
             raise Exception("Entidade desativada, valores não podem ser modificados")
         if isinstance(nova_turmas, list) and nova_turmas.strip():
             self.__turmas = nova_turmas
+            print("Editado com sucesso!")
         else:
             raise ValueError("As turmas devem ser fornecidas como uma lista.")
         
     def set_cpf(self, novo_cpf: str):
-        if not self.__status:
+        if not self.get_status():
             raise Exception("Entidade desativada, valores não podem ser modificados")
         if self.__status:
             self.__cpf = novo_cpf
+            print("Editado com sucesso!")
         else:
             raise Exception("Entidade desativada, valores não podem ser modificados") 
         

@@ -1,3 +1,5 @@
+from cor import cor
+
 class Pessoa:
     def __init__(self, 
                  nome: str, 

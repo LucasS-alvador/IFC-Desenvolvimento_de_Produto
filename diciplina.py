@@ -1,3 +1,5 @@
+from cor import cor
+
 class Disciplina:
     def __init__(self, identificador: int, 
                  descricao: str, 
@@ -47,6 +49,7 @@ class Disciplina:
             raise Exception("Entidade desativada, valores não podem ser modificados")
         if isinstance(novo_identificador, int) and novo_identificador > 0:
             self.__identificador = novo_identificador
+            print("Editado com sucesso!")
         else:
             raise ValueError("O identificador deve ser um número inteiro positivo.")
 
@@ -55,6 +58,7 @@ class Disciplina:
             raise Exception("Entidade desativada, valores não podem ser modificados")
         if isinstance(nova_descricao, str) and nova_descricao.strip():
             self.__descricao = nova_descricao
+            print("Editado com sucesso!")
         else:
             raise ValueError("A descrição deve ser uma string não vazia.")
 
@@ -63,6 +67,7 @@ class Disciplina:
             raise Exception("Entidade desativada, valores não podem ser modificados")
         if all(i in ["EM", "Superior"] for i in novos_segmentos):
             self.__segmento = novos_segmentos
+            print("Editado com sucesso!")
         else:
             raise ValueError("Segmentos inválidos. Devem ser 'EM' ou 'Superior'.")
 
@@ -71,9 +76,11 @@ class Disciplina:
             raise Exception("Entidade desativada, valores não podem ser modificados")
         if isinstance(novo_professor, list):
             self.__professor = novo_professor
+            print("Editado com sucesso!")
         else:
             raise ValueError("Os professores devem ser fornecidos como uma lista.")
         
     def set_status(self, novo_status):
         if novo_status in [0,1]:
             self.__status = novo_status
+            print("Editado com sucesso!")

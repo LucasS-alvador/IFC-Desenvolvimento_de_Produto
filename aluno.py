@@ -1,4 +1,5 @@
 from pessoa import Pessoa
+from cor import cor
 
 class Aluno(Pessoa):
     def __init__(self, 
@@ -16,7 +17,7 @@ class Aluno(Pessoa):
                  bacharel_ciencias=False, 
                  bacharel_pedago=False, 
                  curso="mecatrônica", 
-                 status = 1
+                 status=1
                  ):
         
         super().__init__(nome, 
@@ -69,7 +70,7 @@ class Aluno(Pessoa):
 
     # Setters
     def set_medio_superior(self, novo_medio_superior: bool):
-        if not self.__status:
+        if not self.get_status():
             raise Exception("Entidade desativada, valores não podem ser modificados")
         self.__medio_superior = novo_medio_superior
         if novo_medio_superior:
@@ -80,21 +81,25 @@ class Aluno(Pessoa):
             self.__curso = None
             self.__bacharel_ciencias = False
             self.__bacharel_pedago = False
-        
+        print("Editado com sucesso!")
+
     def set_email_resp(self, novo_email_resp):
-        if not self.__status:
+        if not self.get_status():
             raise Exception("Entidade desativada, valores não podem ser modificados")
         self.__email_resp = novo_email_resp
+        print("Editado com sucesso!")
     
     def set_registro_academ(self, novo_registro):
-        if not self.__status:
+        if not self.get_status():
             raise Exception("Entidade desativada, valores não podem ser modificados")
         self.__registro_academ = novo_registro
+        print("Editado com sucesso!")
     
     def set_turma(self, nova_turma):
-        if not self.__status:
+        if not self.get_status():
             raise Exception("Entidade desativada, valores não podem ser modificados")
         self.__turma = nova_turma
+        print("Editado com sucesso!")
     
     #def set_curso(self):
     #    if not self.__status:
@@ -104,26 +109,28 @@ class Aluno(Pessoa):
     #    return None 
     
     def set_curso(self, curso: str):
-        if not self.__status:
+        if not self.get_status():
             raise Exception("Entidade desativada, valores não podem ser modificados")
         if self.__medio_superior:
             if curso in ["mecatrônica", "eletromecânica", "informática"]:
                 self.__curso = curso
+                print("Editado com sucesso!")
             else:
                 raise ValueError("Curso inválido para o ensino médio.")
         else:
             raise AttributeError("Alunos do ensino superior não possuem 'curso' como no ensino médio.")
 
     def set_bacharel_ciencias(self, bacharel_ciencias: bool):
-        if not self.__status:
+        if not self.get_status():
             raise Exception("Entidade desativada, valores não podem ser modificados")
         if not self.__medio_superior:
             self.__bacharel_ciencias = bacharel_ciencias
+            print("Editado com sucesso!")
         else:
             raise AttributeError("Alunos do ensino médio não possuem bacharelado em ciências da computação.")
 
     def set_bacharel_pedago(self, bacharel_pedago: bool):
-        if not self.__status:
+        if not self.get_status():
             print("Entidade desativada, valores não podem ser modificados")
         if not self.__medio_superior:
             self.__bacharel_pedago = bacharel_pedago
@@ -181,20 +188,19 @@ class Aluno(Pessoa):
     #     else:
     #         print("Opção inválida.")
 
-aluno1 = Aluno(
-    nome="João", 
-    sobrenome="Silva", 
-    nome_user= "joao123",
-    endereco="Rua A", 
-    email="joao@email.com",
-    senha="1234567890",
-    medio_superior=True, 
-    status=1,
-    email_resp="paidojoao@gmail.com",
-    registro_academ="Joao4321",
-    turma="201-MECA",
-    bacharel_ciencias=False,
-    bacharel_pedago=False,
-    curso="mecatrônica"
-)
-aluno1.get_status()
+# aluno1 = Aluno(
+#     nome="João", 
+#     sobrenome="Silva", 
+#     nome_user= "joao123",
+#     endereco="Rua A", 
+#     email="joao@email.com",
+#     senha="1234567890",
+#     medio_superior=True, 
+#     status=1,
+#     email_resp="paidojoao@gmail.com",
+#     registro_academ="Joao4321",
+#     turma="201-MECA",
+#     bacharel_ciencias=False,
+#     bacharel_pedago=False,
+#     curso="mecatrônica"
+# )
