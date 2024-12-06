@@ -1,4 +1,5 @@
 from aluno import Aluno
+from cor import cor
 
 class Turma:
     def __init__(self, nome: str, 
@@ -122,6 +123,7 @@ class Turma:
         elif self.__segmento == "Superior":
             if len(self.__alunos) > 5:
                 self.__ativo = False
+    
 
     # def desativar_turma(self):
     #     print("Você deseja desativar a turma?")

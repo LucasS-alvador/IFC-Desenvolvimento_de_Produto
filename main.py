@@ -2,12 +2,7 @@ from aluno import Aluno
 from professor import Professor
 from turma import Turma
 from diciplina import Disciplina
-
-cor = {
-    "final": "\033[0m",
-    "verde": "\033[0;32m",
-    "vermelho": "\033[0;31m",
-}
+from cor import cor
 
 professor1 = Professor(
     nome="Carlos",
@@ -139,11 +134,11 @@ def menu_aluno(aluno):
                     regiacade = input("Novo registro acadêmico:")
                     aluno.set_registro_academ(regiacade)
                 elif sub_escolha == 6:
-                    segmentos = input("Novos segmentos (separados por vírgula): ").split(", ")
-                    aluno.set_segmentos(segmentos)
+                    segmento = input("Novo segmento: ")
+                    aluno.set_medio_superior(segmento)
                 elif sub_escolha == 7:
-                    turmas = input("Novas turmas (separadas por vírgula): ").split(", ")
-                    aluno.set_turmas(turmas)
+                    turma = input("Nova turma: ")
+                    aluno.set_turma(turma)
                 elif sub_escolha == 8:
                     username = input("Novo nome de usuário: ")
                     aluno.set_nome_user(username)
@@ -161,7 +156,7 @@ def menu_aluno(aluno):
                 print(f"E-mail: {aluno.get_email()}")
                 print(f"E-mail do Responsável: {aluno.get_email_resp()}")
                 print(f"Registro Acadêmico: {aluno.get_registro_academ()}")
-                print(f"Segmentos: {aluno.get_medio_superior()}")
+                print(f"Segmentos: {'EM' if aluno.get_medio_superior() else 'Superior'}")
                 print(f"Turma: {aluno.get_turma()}")
                 print(f"Ativo: {'Sim' if aluno.get_status() else 'Não'}")
             
@@ -199,7 +194,7 @@ def menu_professor(professor):
         print("5 - Excluir Professor")
         print("6 - Sair")
 
-        try:
+        if True:
             escolha = int(input("\nEscolha uma opção: "))
             
             if escolha == 1:  # Editar dados
@@ -281,8 +276,8 @@ def menu_professor(professor):
             else:
                 print(f"{cor['vermelho']}Opção inválida,{cor['final']} escolha um número entre 1 e 6.")
         
-        except ValueError:
-            print(f"{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+        #except ValueError:
+            #print(f"{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
 
 def menu_disciplina(disciplina):
 
@@ -296,7 +291,7 @@ def menu_disciplina(disciplina):
         print("5 - Excluir Disciplina")
         print("6 - Sair")
 
-        try:
+        if True:
             escolha = int(input("\nEscolha uma opção: "))
             
             if escolha == 1:  # Editar dados
@@ -354,8 +349,8 @@ def menu_disciplina(disciplina):
             else:
                 print(f"{cor['vermelho']}Opção inválida,{cor['final']} escolha um número entre 1 e 6.")
         
-        except ValueError:
-            print(f"{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+        #except ValueError:
+            #print(f"{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
 
 def menu_turma(turma):
     while True:
@@ -368,7 +363,7 @@ def menu_turma(turma):
         print("5 - Excluir Turma")
         print("6 - Sair")
 
-        try:
+        if True:
             escolha = int(input("\nEscolha uma opção: "))
                 
             if escolha == 1:  # Editar dados (em casa?) da turma
@@ -433,8 +428,8 @@ def menu_turma(turma):
             else:
                 print(f"{cor['vermelho']}Opção inválida,{cor['final']} escolha um número entre 1 e 6.")
         
-        except ValueError:
-            print(f"{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+        #except ValueError:
+        #    print(f"{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
 
 while True:
     escolha = ""
@@ -446,7 +441,7 @@ while True:
     print("4 - Menu Turma")
     print("5 - Sair")
 
-    try:
+    if True:
         escolha = int(input("\nEscolha uma opção: "))
 
         # menu aluno
@@ -514,5 +509,5 @@ while True:
         else:
             print(f"\n{cor['vermelho']}Opção inválida{cor['final']}, escolha um número entre 1 e 5.")
 
-    except:
-        print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+    #except:
+    #    print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
