@@ -1,5 +1,5 @@
 from pessoa import Pessoa
-from cor import cors
+from cor import cor
 
 class Professor(Pessoa):
     def __init__(self, nome: str, 
