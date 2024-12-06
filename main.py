@@ -441,73 +441,82 @@ while True:
     print("4 - Menu Turma")
     print("5 - Sair")
 
-    if True:
+    try:
         escolha = int(input("\nEscolha uma opção: "))
+    except ValueError:
+        print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
 
-        # menu aluno
-        if escolha == 1:
-            print("\nEscolha qual aluno você deseja acessar:")
-            for i in range(len(alunos)):
-                print(f"{i+1} - {alunos[i].get_nome()}")
-            if True:
-                index = int(input("\nInsira a escolha: ")) - 1
-                if index >= 0 and index < len(alunos):
-                    menu_aluno(alunos[index])
-                else:
-                    print(f"\n{cor['vermelho']}Aluno inválido!{cor['final']}")
-            #except:
-                #print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+    # menu aluno
+    if escolha == 1:
+        print("\nEscolha qual aluno você deseja acessar:")
+        for i in range(len(alunos)):
+            print(f"{i+1} - {alunos[i].get_nome()}")
 
-        # menu professor
-        elif escolha == 2:
-            print("\nEscolha qual professor você deseja acessar:")
-            for i in range(len(professores)):
-                print(f"{i+1} - {professores[i].get_nome()}")
-            try:
-                index = int(input("\nInsira a escolha: ")) - 1
-                if index >= 0 and index < len(professores):
-                    menu_professor(professores[index])
-                else:
-                    print(f"\n{cor['vermelho']}Professor inválido!{cor['final']}")
-            except:
-                print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+        try:
+            index = int(input("\nInsira a escolha: ")) - 1
+        except ValueError:
+            print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
 
-        # menu disciplina
-        elif escolha == 3:
-            print("\nEscolha qual disciplina você deseja acessar:")
-            for i in range(len(disciplinas)):
-                print(f"{i+1} - {disciplinas[i].get_descricao()}")
-            try:
-                index = int(input("\nInsira a escolha: ")) - 1
-                if index >= 0 and index < len(disciplinas):
-                    menu_disciplina(disciplinas[index])
-                else:
-                    print(f"\n{cor['vermelho']}Disciplina inválida!{cor['final']}")
-            except:
-                print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+        if index >= 0 and index < len(alunos):
+            menu_aluno(alunos[index])
+        else:
+            print(f"\n{cor['vermelho']}Aluno inválido!{cor['final']}")
+        #except:
+            #print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+
+    # menu professor
+    elif escolha == 2:
+        print("\nEscolha qual professor você deseja acessar:")
+        for i in range(len(professores)):
+            print(f"{i+1} - {professores[i].get_nome()}")
+
+        try:
+            index = int(input("\nInsira a escolha: ")) - 1
+        except ValueError:
+            print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+
+        if index >= 0 and index < len(professores):
+            menu_professor(professores[index])
+        else:
+            print(f"\n{cor['vermelho']}Professor inválido!{cor['final']}")
+
+    # menu disciplina
+    elif escolha == 3:
+        print("\nEscolha qual disciplina você deseja acessar:")
+        for i in range(len(disciplinas)):
+            print(f"{i+1} - {disciplinas[i].get_descricao()}")
+
+        try:
+            index = int(input("\nInsira a escolha: ")) - 1
+        except:
+            print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+
+        if index >= 0 and index < len(disciplinas):
+            menu_disciplina(disciplinas[index])
+        else:
+            print(f"\n{cor['vermelho']}Disciplina inválida!{cor['final']}")
         
-        # menu turma
-        elif escolha == 4:
-            print("\nEscolha qual turma você deseja acessar:")
-            for i in range(len(turmas)):
-                print(f"{i+1} - {turmas[i].get_nome()}")
-            try:
-                index = int(input("\nInsira a escolha: ")) - 1
-                if index >= 0 and index < len(turmas):
-                    menu_turma(turmas[index])
-                else:
-                    print(f"\n{cor['vermelho']}Turma inválida!{cor['final']}")
-            except:
-                print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
-
-        # sair
-        elif escolha == 5:
-            print(f"\n{cor['vermelho']}Saindo...{cor['final']}")
-            break
+    
+    # menu turma
+    elif escolha == 4:
+        print("\nEscolha qual turma você deseja acessar:")
+        for i in range(len(turmas)):
+            print(f"{i+1} - {turmas[i].get_nome()}")
+        
+        try:
+            index = int(input("\nInsira a escolha: ")) - 1
+        except:
+            print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")
+        
+        if index >= 0 and index < len(turmas):
+            menu_turma(turmas[index])
+        else:
+            print(f"\n{cor['vermelho']}Turma inválida!{cor['final']}")
+    # sair
+    elif escolha == 5:
+        print(f"\n{cor['vermelho']}Saindo...{cor['final']}")
+        break
 
         # opção inválida
-        else:
-            print(f"\n{cor['vermelho']}Opção inválida{cor['final']}, escolha um número entre 1 e 5.")
-
     #except:
     #    print(f"\n{cor['vermelho']}Entrada inválida.{cor['final']} Por favor, digite um número.")

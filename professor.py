@@ -70,30 +70,30 @@ class Professor(Pessoa):
     # Setters
     def set_formacao(self, nova_formacao: str):
         if not self.get_status():
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         if isinstance(nova_formacao, str) and nova_formacao.strip():
             self.__formacao = nova_formacao
-            print("Editado com sucesso!")
+            print(f"{cor['verde']}Editado com sucesso!{cor['final']}")
         else:
-            raise ValueError("A formação deve ser uma string não vazia.")
+            raise ValueError(f"{cor['vermelho']}A formação deve ser uma string não vazia.{cor['final']}")
 
     def set_disciplinas(self, novas_disciplinas: list):
         if not self.get_status():
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         if isinstance(novas_disciplinas, list):
             self.__disciplinas = novas_disciplinas
-            print("Editado com sucesso!")
+            print(f"{cor['verde']}Editado com sucesso!{cor['final']}")
         else:
-            raise ValueError("As disciplinas devem ser fornecidas como uma lista.")
+            raise ValueError(f"{cor['vermelho']}As disciplinas devem ser fornecidas como uma lista.{cor['final']}")
 
     def set_segmentos(self, novos_segmentos: list):
         if not self.get_status():
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         if isinstance(novos_segmentos, list):
             self.__segmentos = novos_segmentos
-            print("Editado com sucesso!")
+            print(f"{cor['verde']}Editado com sucesso!{cor['final']}")
         else:
-            raise ValueError("Os segmentos devem ser fornecidos como uma lista.")
+            raise ValueError(f"{cor['vermelho']}Os segmentos devem ser fornecidos como uma lista.{cor['final']}")
 
     # def set_username(self, novo_username: str):
     #     if isinstance(novo_username, str) and novo_username.strip():
@@ -109,21 +109,21 @@ class Professor(Pessoa):
         
     def set_turmas(self, nova_turmas: str):
         if not self.get_status():
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         if isinstance(nova_turmas, list) and nova_turmas.strip():
             self.__turmas = nova_turmas
-            print("Editado com sucesso!")
+            print(f"{cor['verde']}Editado com sucesso!{cor['final']}")
         else:
-            raise ValueError("As turmas devem ser fornecidas como uma lista.")
+            raise ValueError(f"{cor['vermelho']}As turmas devem ser fornecidas como uma lista.{cor['fianl']}")
         
     def set_cpf(self, novo_cpf: str):
         if not self.get_status():
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         if self.__status:
             self.__cpf = novo_cpf
-            print("Editado com sucesso!")
+            print(f"{cor['verde']}Editado com sucesso!{cor['final']}")
         else:
-            raise Exception("Entidade desativada, valores não podem ser modificados") 
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}") 
         
     # def set_status(self, novo_status: int):
     #     if novo_status in [0, 1]:

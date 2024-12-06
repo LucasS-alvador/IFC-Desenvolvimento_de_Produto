@@ -45,40 +45,40 @@ class Pessoa:
         if self.__status:
             self.__nome = novo_nome
         else:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
 
     def set_sobrenome(self, novo_sobrenome: str):
         if self.__status:
             self.__sobrenome = novo_sobrenome
         else:
-            raise Exception("Entidade desativada, valores não podem ser modificados")        
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
 
     def set_nome_user(self, novo_nome_user):
         if self.__status:
             self.__nome_user = novo_nome_user
         else:
-            raise Exception("Entidade desativada, valores não podem ser modificados") 
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}") 
 
     def set_endereco(self, novo_endereco: str):
         if self.__status:
             self.__endereco = novo_endereco
         else:
-            raise Exception("Entidade desativada, valores não podem ser modificados") 
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}") 
 
     def set_email(self, novo_email: str):
         if self.__status:
             self.__email = novo_email
         else:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         
     def set_senha(self, nova_senha: str):
         if self.__status:
             self.__senha = nova_senha
         else:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
     
     def set_status(self, novo_status):
         if novo_status in [0, 1]:
             self.__status = novo_status
         else:
-            print("Status deve ser 0 ou 1")
+            print(f"{cor['vermelho']}Status deve ser 0 ou 1{cor['final']}")

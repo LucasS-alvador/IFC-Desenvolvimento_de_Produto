@@ -65,12 +65,12 @@ class Turma:
     # Setters
     def set_nome(self, novo_nome: str):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         self.__nome = novo_nome
 
     def set_segmento(self, novo_segmento: str):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         if novo_segmento in ["EM", "Superior"]:
             self.__segmento = novo_segmento
         else:
@@ -78,12 +78,12 @@ class Turma:
 
     def set_curso(self, novo_curso: str):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         self.__curso = novo_curso
 
     def set_ano(self, novo_ano: int):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         if isinstance(novo_ano, int) and novo_ano > 0:
             self.__ano = novo_ano
         else:
@@ -91,7 +91,7 @@ class Turma:
 
     def set_disciplinas(self, novas_disciplinas: list):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         if isinstance(novas_disciplinas, list):
             self.__disciplinas = novas_disciplinas
         else:
@@ -106,11 +106,11 @@ class Turma:
     #editar alunos
     def add_alunos(self, novo_aluno: Aluno):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         self.__alunos += novo_aluno
     def remove_aluno(self, remov_aluno: int):
         if not self.__status:
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         if 0 <= remov_aluno < len(self.__alunos):
             del self.__alunos[remov_aluno]
         else:

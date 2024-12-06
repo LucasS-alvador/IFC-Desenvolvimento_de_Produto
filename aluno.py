@@ -71,7 +71,7 @@ class Aluno(Pessoa):
     # Setters
     def set_medio_superior(self, novo_medio_superior: bool):
         if not self.get_status():
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         self.__medio_superior = novo_medio_superior
         if novo_medio_superior:
             self.__curso = "mecatrônica"
@@ -81,62 +81,62 @@ class Aluno(Pessoa):
             self.__curso = None
             self.__bacharel_ciencias = False
             self.__bacharel_pedago = False
-        print("Editado com sucesso!")
+        print(f"{cor['verde']}Editado com sucesso!{cor['final']}")
 
     def set_email_resp(self, novo_email_resp):
         if not self.get_status():
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         self.__email_resp = novo_email_resp
-        print("Editado com sucesso!")
+        print(f"{cor['verde']}Editado com sucesso!{cor['final']}")
     
     def set_registro_academ(self, novo_registro):
         if not self.get_status():
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         self.__registro_academ = novo_registro
-        print("Editado com sucesso!")
+        print(f"{cor['verde']}Editado com sucesso!{cor['final']}")
     
     def set_turma(self, nova_turma):
         if not self.get_status():
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         self.__turma = nova_turma
-        print("Editado com sucesso!")
+        print(f"{cor['verde']}Editado com sucesso!{cor['final']}")
     
     #def set_curso(self):
     #    if not self.__status:
-    #        raise Exception("Entidade desativada, valores não podem ser modificados")
+    #        raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
     #    if self.__medio_superior:
     #        return self.__curso
     #    return None 
     
     def set_curso(self, curso: str):
         if not self.get_status():
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         if self.__medio_superior:
             if curso in ["mecatrônica", "eletromecânica", "informática"]:
                 self.__curso = curso
-                print("Editado com sucesso!")
+                print(f"{cor['verde']}Editado com sucesso!{cor['final']}")
             else:
-                raise ValueError("Curso inválido para o ensino médio.")
+                raise ValueError(f"{cor['vermelho']}Curso inválido para o ensino médio.{cor['final']}")
         else:
-            raise AttributeError("Alunos do ensino superior não possuem 'curso' como no ensino médio.")
+            raise AttributeError(f"{cor['vermelho']}Alunos do ensino superior não possuem 'curso' como no ensino médio.{cor['final']}")
 
     def set_bacharel_ciencias(self, bacharel_ciencias: bool):
         if not self.get_status():
-            raise Exception("Entidade desativada, valores não podem ser modificados")
+            raise Exception(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         if not self.__medio_superior:
             self.__bacharel_ciencias = bacharel_ciencias
-            print("Editado com sucesso!")
+            print(f"{cor['verde']}Editado com sucesso!{cor['final']}")
         else:
-            raise AttributeError("Alunos do ensino médio não possuem bacharelado em ciências da computação.")
+            raise AttributeError(f"{cor['vermelho']}Alunos do ensino médio não possuem bacharelado em ciências da computação.{cor['final']}")
 
     def set_bacharel_pedago(self, bacharel_pedago: bool):
         if not self.get_status():
-            print("Entidade desativada, valores não podem ser modificados")
+            print(f"{cor['vermelho']}Entidade desativada, valores não podem ser modificados{cor['final']}")
         if not self.__medio_superior:
             self.__bacharel_pedago = bacharel_pedago
-            print("Editado com sucesso!")
+            print(f"{cor['verde']}Editado com sucesso!{cor['final']}")
         else:
-            raise AttributeError("Alunos do ensino médio não possuem bacharelado em pedagogia.")
+            raise AttributeError(f"{cor['vermelho']}Alunos do ensino médio não possuem bacharelado em pedagogia.{cor['final']}")
 
     # def __str__(self):
     #     return f'''
